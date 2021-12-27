@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import './assets/styles/App.scss';
+import './assets/styles/consts.scss';
+import TableRow from './components/TableRow';
+
+const words = require('./components/words.json');
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <tr>
+        <td className='idCol'>№</td>
+        <td className='engCol'>English</td>
+        <td className='ruCol'>Russian</td>
+        <td className='transcriptCol'>Transcription</td>
+      </tr>
+      {words.map((word) => <TableRow 
+      id = {word.id}
+      english = {word.english}
+      russian = {word.russian}
+      transcription = {word.transcription}
+      isEditable = {word.isEditable}
+      />)}
     </div>
   );
 }

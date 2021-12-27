@@ -1,0 +1,77 @@
+@use 'consts' as c;
+@import 'consts';
+
+.idCol {
+    width: 100px;
+    height: 25px;
+    border: c.$border;
+    font-size: c.$font-size;
+}
+
+.engCol,
+.ruCol,
+.transcriptCol {
+    width: 150px;
+    height: 25px;
+    border-top: c.$border;
+    border-bottom: c.$border;
+    border-right: c.$border;
+    font-size: c.$font-size;
+}
+
+.parentForInputs:focus-within {
+    background-color: rgba(52, 182, 0, 0.479);
+    .engInput,
+    .ruInput,
+    .transcriptInput {
+        background-color: rgba(52, 182, 0, 0);
+    }
+}
+
+.engInput,
+.ruInput,
+.transcriptInput {
+    width: 139px;
+    border: 0px;
+    border-bottom: c.$border;
+    margin: 5px;
+}
+
+.engInput {
+    margin-left: 100px;
+}
+
+.editBtn,
+.deleteBtn,
+.saveBtn {
+    border: 0px;
+    border-radius: 5px;
+    margin: 2px;
+    padding: 4px 8px;
+    color: rgb(51, 16, 16);
+    font-size: c.$font-size;
+}
+
+.editBtn {
+    background-color: c.$editBtnMain;
+}
+
+.editBtn:hover {
+    box-shadow: c.$editBtnHover;
+}
+
+.deleteBtn {
+    background-color: c.$deleteBtnMain;
+}
+
+.deleteBtn:hover {
+    box-shadow: c.$deleteBtnHover;
+}
+
+.saveBtn {
+    background-color: c.$saveBtnMain;
+}
+
+.saveBtn:hover {
+    box-shadow: c.$saveBtnHover;
+}
