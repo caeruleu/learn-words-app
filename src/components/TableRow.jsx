@@ -1,16 +1,18 @@
+import React, {useState} from 'react';
 import Delete from './Delete';
 import Edit from './Edit';
 import Save from './Save';
+import Cancel from './Cancel';
 import '../assets/styles/tablerow.scss';
 import '../assets/styles/consts.scss';
 
-//const words = JSON.parse(wordsJSON);
-
-
 function TableRow(props) {
-    const {id, english, russian, transcription, isEditable} = props;
+    const {id, english, russian, transcription} = props;
+    const [editable, setEditable] = useState(false);
+    const handleEditable = () => {setEditable(!editable);}
+
     return (
-        isEditable
+        editable
         ? <div className="TableRow">
             <tr>
                 <div className="parentForInputs">
@@ -19,8 +21,8 @@ function TableRow(props) {
                     <input className='transcriptInput' value={transcription} />
                 </div>
                 <td>
-                    <Save />
-                    <Delete />
+                    <span><Save /></span>
+                    <span onClick = {handleEditable}><Cancel /></span>
                 </td>
             </tr>
         </div>
@@ -32,8 +34,8 @@ function TableRow(props) {
                 <td className='ruCol'>{russian}</td>
                 <td className='transcriptCol'>{transcription}</td>
                 <td>
-                    <Edit />
-                    <Delete />
+                    <span onClick = {handleEditable}><Edit /></span>
+                    <span><Delete /></span>
                 </td>
             </tr>
         </div>

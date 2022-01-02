@@ -43,7 +43,8 @@
 
 .editBtn,
 .deleteBtn,
-.saveBtn {
+.saveBtn,
+.cancelBtn {
     border: 0px;
     border-radius: 5px;
     margin: 2px;
@@ -74,4 +75,12 @@
 
 .saveBtn:hover {
     box-shadow: c.$saveBtnHover;
+}
+
+.cancelBtn {
+    background-color: c.$cancelBtnMain;
+}
+
+.cancelBtn:hover {
+    box-shadow: c.$cancelBtnHover;
 }
