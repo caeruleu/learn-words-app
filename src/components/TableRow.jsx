@@ -6,7 +6,7 @@ import Cancel from './Cancel';
 import '../assets/styles/tablerow.scss';
 import '../assets/styles/consts.scss';
 
-function TableRow(props) {
+export default function TableRow(props) {
     const {id, english, russian, transcription} = props;
     const [editable, setEditable] = useState(false);
     const handleEditable = () => {setEditable(!editable);}
@@ -41,5 +41,3 @@ function TableRow(props) {
         </div>
     );
 }
-
-export default TableRow;

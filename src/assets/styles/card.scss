@@ -1,0 +1,53 @@
+@use 'consts' as c;
+@import 'consts';
+
+.Card {
+    margin: 10px;
+    width: 300px;
+    height: 350px;
+    display: grid;
+    grid-template-rows: repeat(2, 175px);
+    grid-template-areas: "word" "btn";
+    border: 1px solid rgba(128, 128, 128, 0.685);
+    border-radius: 25px;
+    background-color: rgba(128, 128, 128, 0.137);
+}
+
+.wordCont {
+    grid-area: word;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    .cardWord {
+        font-size: 24px;
+        font-weight: 650;
+        margin: 2px;
+    }
+
+    .cardTranscript {
+        color: gray;
+        margin: 0;
+    }
+}
+.cardBtnCont {
+    grid-area: btn;
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+    .cardBtn {
+        width: 100px;
+        height: 30px;
+        border: 0px;
+        border-radius: 13px;
+        background-color: c.$checkBtn;
+        color: white;
+        font-weight: 500;
+    }
+}
+
+.cardTranslation {
+    color: c.$checkText;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 0px;
+}
