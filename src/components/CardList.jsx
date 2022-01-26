@@ -25,7 +25,6 @@ export default function CardList () {
         }
     }
 
-
     return(
         <div className="cardCont">
             <button className="arrowBtnLeft" onClick={prev}><FontAwesomeIcon icon={faAngleLeft} /></button>

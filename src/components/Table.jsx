@@ -6,13 +6,13 @@ const words = require('./words.json');
 
 export default function Table() {
     return(
-        <div className='Table'>
-            <tr >
-                <td className='idCol'>№</td>
-                <td className='engCol'>English</td>
-                <td className='ruCol'>Russian</td>
-                <td className='transcriptCol'>Transcription</td>
-            </tr>
-                {words.map((word) => <TableRow {...word} />)}
-        </div>
+            <tbody className='Table'>
+                <tr>
+                    <td className='idCol'>№</td>
+                    <td className='engCol'>English</td>
+                    <td className='ruCol'>Russian</td>
+                    <td className='transcriptCol'>Transcription</td>
+                </tr>
+                    {words.map((word, index) => <TableRow key={word.id} index={index + 1} {...word} />)}
+            </tbody>
     );}

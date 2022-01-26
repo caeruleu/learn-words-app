@@ -19,6 +19,15 @@
     font-size: c.$font-size;
 }
 
+.TableRow {
+    display: flex;
+    width: 100%;
+}
+
+.parentForInputs {
+    margin-left: 96px;
+}
+
 .parentForInputs:focus-within {
     background-color: rgba(52, 182, 0, 0.479);
     .engInput,
@@ -37,10 +46,6 @@
     margin: 5px;
 }
 
-.engInput {
-    margin-left: 100px;
-}
-
 .editBtn,
 .deleteBtn,
 .saveBtn,
@@ -51,6 +56,7 @@
     padding: 4px 8px;
     color: rgb(51, 16, 16);
     font-size: c.$font-size;
+    width: 30px;
 }
 
 .editBtn {

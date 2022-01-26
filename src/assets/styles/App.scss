@@ -1,4 +1,14 @@
 .App {
   margin: 10px;
   text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.Table {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  width: 650px;
 }

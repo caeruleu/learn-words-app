@@ -1,0 +1,34 @@
+@use 'consts' as c;
+@import 'consts';
+
+.Header {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    background-color: rgb(12, 129, 65);;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+}
+
+.logo {
+    color: white;
+    font-size: 30px;
+}
+
+.headerNav {
+    margin-top: -5px;
+    display: flex;
+}
+
+.test {
+    color: white;
+    margin-top: 3px;
+    font-size: 18px;
+}
+
+a {
+    text-decoration: none;
+}

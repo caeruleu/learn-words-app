@@ -1,43 +1,49 @@
 import React, {useState} from 'react';
-import Delete from './Delete';
-import Edit from './Edit';
-import Save from './Save';
-import Cancel from './Cancel';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../assets/styles/tablerow.scss';
 import '../assets/styles/consts.scss';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faStepBackward } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 export default function TableRow(props) {
-    const {id, english, russian, transcription} = props;
+    const {id, index, english, russian, transcription} = props;
+
     const [editable, setEditable] = useState(false);
-    const handleEditable = () => {setEditable(!editable);}
+    let handleEditable = () => {
+        setEditable(!editable);
+        setWord({...props})
+    }
+
+    const [word, setWord] = useState({...props});
+    let handleChangeWord = (e) => {
+        setWord({...word, [e.target.name]: e.target.value})
+    }
 
     return (
         editable
-        ? <div className="TableRow">
-            <tr>
-                <div className="parentForInputs">
-                    <input className='engInput' value={english} />
-                    <input className='ruInput' value={russian} />
-                    <input className='transcriptInput' value={transcription} />
-                </div>
-                <td>
-                    <span><Save /></span>
-                    <span onClick = {handleEditable}><Cancel /></span>
-                </td>
-            </tr>
-        </div>
+        ? <tr className="TableRow">
+            <span className="parentForInputs">
+                <td><input className='engInput' value={word.english} name='english' onChange={handleChangeWord}/></td>
+                <td><input className='ruInput' value={word.russian} name='russian' onChange={handleChangeWord}/></td>
+                <td><input className='transcriptInput' value={word.transcription} name='transcription' onChange={handleChangeWord}/></td>
+            </span>
+            <td>
+                <button className='saveBtn'><FontAwesomeIcon icon={faPlus} /></button>
+                <button onClick = {handleEditable} className='cancelBtn'><FontAwesomeIcon icon={faStepBackward} /></button>
+            </td>
+        </tr>
 
-        : <div className="TableRow">
-            <tr>
-                <td className='idCol'>{id}</td>
-                <td className='engCol'>{english}</td>
-                <td className='ruCol'>{russian}</td>
-                <td className='transcriptCol'>{transcription}</td>
-                <td>
-                    <span onClick = {handleEditable}><Edit /></span>
-                    <span><Delete /></span>
-                </td>
-            </tr>
-        </div>
+        : <tr className="TableRow">
+            <td className='idCol'>{index}</td>
+            <td className='engCol'>{english}</td>
+            <td className='ruCol'>{russian}</td>
+            <td className='transcriptCol'>{transcription}</td>
+            <td>
+                <button onClick = {handleEditable} className='editBtn'><FontAwesomeIcon icon={faEdit} /></button>
+                <button className='deleteBtn'><FontAwesomeIcon icon={faTrashAlt} /></button>
+            </td>
+        </tr>
     );
 }
