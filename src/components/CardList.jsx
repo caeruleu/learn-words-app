@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Card from "./Card";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
@@ -8,7 +8,8 @@ const words = require('./words.json');
 
 export default function CardList () {
     let [index, setIndex] = useState(0);
-
+    const [count, setCount] = useState(0);
+        
     let prev = () => {
         if (index === 0) {
             setIndex(words.length - 1);

@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef} from 'react';
 import '../assets/styles/card.scss';
 import '../assets/styles/consts.scss';
 import words from './words.json'
 
 export default function Card (props) {
     const {id, english, transcription, russian} = props;
+    const ref = useRef(null);
 
     const [translated, setTranslated] = useState(false);
     const handleTranslated = () => {setTranslated(!translated);}
+
+    useEffect(() => {
+        ref.current.focus();
+        return () => {
+            console.log('card unmounted');
+        }
+    }, [])
     
     return(
         translated 
@@ -28,7 +36,7 @@ export default function Card (props) {
                 <p className='cardTranscript'>{transcription}</p>
             </div>
             <div className='cardBtnCont'>
-                <button className='cardBtn' onClick={handleTranslated}>Проверить</button>
+                <button className='cardBtn' onClick={handleTranslated} ref={ref}>Проверить</button>
             </div>
         </div>
     )
