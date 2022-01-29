@@ -8,6 +8,10 @@
     font-size: c.$font-size;
 }
 
+.btnsCol {
+    width: 83px;
+}
+
 .engCol,
 .ruCol,
 .transcriptCol {
@@ -29,11 +33,10 @@
 }
 
 .parentForInputs:focus-within {
-    background-color: rgba(52, 182, 0, 0.479);
     .engInput,
     .ruInput,
     .transcriptInput {
-        background-color: rgba(52, 182, 0, 0);
+        background-color: rgba(52, 182, 0, 0.479);
     }
 }
 

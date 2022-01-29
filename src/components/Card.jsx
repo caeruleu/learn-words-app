@@ -18,7 +18,7 @@ export default function Card (props) {
         return () => {
             console.log('card unmounted');
         }
-    }, [])
+    }, []);
     
     return(
         translated 
@@ -42,5 +42,5 @@ export default function Card (props) {
                 <button className='cardBtn' value={id} onClick={handleTranslated} ref={ref}>Проверить</button>
             </div>
         </div>
-    )
+    );
 }

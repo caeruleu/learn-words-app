@@ -9,26 +9,24 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 export default function TableRow(props) {
     const {id, index, english, russian, transcription} = props;
-
     const [editable, setEditable] = useState(false);
+    const [word, setWord] = useState({...props});
+
     let handleEditable = () => {
         setEditable(!editable);
         setWord({...props})
     }
-
-    const [word, setWord] = useState({...props});
+    
     let handleChangeWord = (e) => {
         setWord({...word, [e.target.name]: e.target.value})
     }
 
     return (
         editable
-        ? <tr className="TableRow">
-            <span className="parentForInputs">
-                <td><input className='engInput' value={word.english} name='english' onChange={handleChangeWord}/></td>
-                <td><input className='ruInput' value={word.russian} name='russian' onChange={handleChangeWord}/></td>
-                <td><input className='transcriptInput' value={word.transcription} name='transcription' onChange={handleChangeWord}/></td>
-            </span>
+        ? <tr className="TableRow parentForInputs">
+            <td><input className='engInput' value={word.english} name='english' onChange={handleChangeWord}/></td>
+            <td><input className='ruInput' value={word.russian} name='russian' onChange={handleChangeWord}/></td>
+            <td><input className='transcriptInput' value={word.transcription} name='transcription' onChange={handleChangeWord}/></td>
             <td>
                 <button className='saveBtn'><FontAwesomeIcon icon={faPlus} /></button>
                 <button onClick = {handleEditable} className='cancelBtn'><FontAwesomeIcon icon={faStepBackward} /></button>
