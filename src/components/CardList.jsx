@@ -25,17 +25,25 @@ export default function CardList () {
             setIndex(index + 1);
         }
     }
+    
+    let handleClick = () => {
+        if (count < words.length) {setCount(count +1);}
+    }
 
     return(
-        <div className="cardCont">
-            <button className="arrowBtnLeft" onClick={prev}><FontAwesomeIcon icon={faAngleLeft} /></button>
-            <Card 
-            key={words[index].id}
-            english={words[index].english}
-            transcription={words[index].transcription}
-            russian={words[index].russian}
-            />
-            <button className="arrowBtnRight" onClick={next}><FontAwesomeIcon icon={faAngleRight} /></button>
+        <div>
+            <div className="cardCont">
+                <button className="arrowBtnLeft" onClick={prev}><FontAwesomeIcon icon={faAngleLeft} /></button>
+                <Card 
+                key = {words[index].id}
+                english = {words[index].english}
+                transcription = {words[index].transcription}
+                russian = {words[index].russian}
+                handleClick = {handleClick}
+                />
+                <button className="arrowBtnRight" onClick={next}><FontAwesomeIcon icon={faAngleRight} /></button>
+            </div>
+            <p>Выучено слов: {count} / {words.length}</p>
         </div>
     )
 }

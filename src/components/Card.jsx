@@ -4,11 +4,14 @@ import '../assets/styles/consts.scss';
 import words from './words.json'
 
 export default function Card (props) {
-    const {id, english, transcription, russian} = props;
+    const {id, english, transcription, russian, handleClick} = props;
+    const [translated, setTranslated] = useState(false);
     const ref = useRef(null);
 
-    const [translated, setTranslated] = useState(false);
-    const handleTranslated = () => {setTranslated(!translated);}
+    const handleTranslated = () => {
+        setTranslated(!translated);
+        handleClick();
+    }
 
     useEffect(() => {
         ref.current.focus();
@@ -36,7 +39,7 @@ export default function Card (props) {
                 <p className='cardTranscript'>{transcription}</p>
             </div>
             <div className='cardBtnCont'>
-                <button className='cardBtn' onClick={handleTranslated} ref={ref}>Проверить</button>
+                <button className='cardBtn' value={id} onClick={handleTranslated} ref={ref}>Проверить</button>
             </div>
         </div>
     )
