@@ -14,7 +14,7 @@ export default function CardList () {
         if (index === 0) {
             setIndex(words.length - 1);
         } else {
-            setIndex(index - 1)
+            setIndex(index - 1);
         }
     }
 
