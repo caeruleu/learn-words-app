@@ -32,27 +32,35 @@
     margin-left: 96px;
 }
 
-.parentForInputs:focus-within {
-    .engInput,
-    .ruInput,
-    .transcriptInput {
-        background-color: rgba(52, 182, 0, 0.479);
+.engInput:focus-within,
+.ruInput:focus-within,
+.transcriptInput:focus-within {
+    background-color: rgba(52, 182, 0, 0.479);
     }
-}
 
 .engInput,
 .ruInput,
-.transcriptInput {
-    width: 139px;
+.transcriptInput,
+.disabled {
+    width: 139.5px;
     border: 0px;
     border-bottom: c.$border;
     margin: 5px;
 }
 
+.disabled {
+    border-bottom: 1px solid red;
+}
+
+.disabled:focus-within {
+    background-color: c.$deleteBtnMain;
+}
+
 .editBtn,
 .deleteBtn,
 .saveBtn,
-.cancelBtn {
+.cancelBtn,
+.disabledBtn {
     border: 0px;
     border-radius: 5px;
     margin: 2px;
@@ -84,6 +92,14 @@
 
 .saveBtn:hover {
     box-shadow: c.$saveBtnHover;
+}
+
+.disabledBtn {
+    background-color: rgb(134, 134, 134);
+}
+
+.disabledBtn:hover {
+    box-shadow: 0px 0px 3px 3px rgba(134, 134, 134, 0.541);
 }
 
 .cancelBtn {

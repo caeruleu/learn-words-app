@@ -39,7 +39,7 @@ export default function Card (props) {
                 <p className='cardTranscript'>{transcription}</p>
             </div>
             <div className='cardBtnCont'>
-                <button className='cardBtn' value={id} onClick={handleTranslated} ref={ref}>Проверить</button>
+                <button className='cardBtn' value={id} onClick={handleTranslated} ref={ref}>Проверить</button> 
             </div>
         </div>
     );
