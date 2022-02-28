@@ -11,7 +11,7 @@ export default function TableRow(props) {
     const {id, index, english, russian, transcription} = props;
     const [editable, setEditable] = useState(false);
     const [word, setWord] = useState({...props});
-    const [disable, setDisable] = useState(false)
+    const [disable, setDisable] = useState(false);
 
     let handleEditable = () => {
         setEditable(!editable);
@@ -21,7 +21,7 @@ export default function TableRow(props) {
     
     let handleChangeWord = (e) => {
         setWord({...word, [e.target.name]: e.target.value})
-        if (e.target.value.trim() == '') {
+        if (e.target.value.trim() === '') {
             setDisable(true) 
         } else {
             setDisable(false)
@@ -44,7 +44,7 @@ export default function TableRow(props) {
 
     return (
         editable
-        ? <tr className="TableRow parentForInputs">
+        ? <tr className="TableRow parentForInputs" key={id}>
             <td><input className={disable ? "disabled" : "engInput"} value={word.english} name='english' onChange={handleChangeWord}/></td>
             <td><input className={disable ? "disabled" : "ruInput"} value={word.russian} name='russian' onChange={handleChangeWord}/></td>
             <td><input className={disable ? "disabled" : "transcriptInput"} value={word.transcription} name='transcription' onChange={handleChangeWord}/></td>
@@ -54,7 +54,7 @@ export default function TableRow(props) {
             </td>
         </tr>
 
-        : <tr className="TableRow">
+        : <tr className="TableRow" key={id}>
             <td className='idCol'>{index}</td>
             <td className='engCol'>{english}</td>
             <td className='ruCol'>{russian}</td>

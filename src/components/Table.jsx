@@ -1,11 +1,24 @@
 import "../assets/styles/tablerow.scss";
 import "../assets/styles/consts.scss";
 import TableRow from "./TableRow";
-import { useState } from "react";
-
-const words = require("./words.json");
+import { useState, useEffect } from "react";
 
 export default function Table() {
+    const [wordsArr, setWordsArr] = useState([])
+
+    useEffect(() => {
+        getWordsArr();
+        console.log(wordsArr);
+    }, [])
+
+    const getWordsArr = () => {
+        fetch('/api/words')
+            .then(response => response.json())
+            .then(data => {
+                setWordsArr(data);
+            })
+    }
+
     return (
         <table>
             <tbody className="Table">
@@ -16,7 +29,7 @@ export default function Table() {
                     <td className="transcriptCol">Transcription</td>
                     <td className="btnsCol"></td>
                 </tr>
-                {words.map((word, index) => (
+                {wordsArr.map((word, index) => (
                     <TableRow key={word.id} index={index + 1} {...word} />
                 ))}
             </tbody>
