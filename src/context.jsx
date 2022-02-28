@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 const context = React.createContext();
 
-function contextProvider(props) {
+function ContextProvider(props) {
+    const [wordsArr, setWordsArr] = useState([]);
+
+    let getWordsArr = () => {
+        fetch('/api/words')
+            .then(response => response.json())
+            .then(data => {
+                setWordsArr(data);
+                return data;
+            })
+    }
+
+    useEffect(() => {
+        getWordsArr();
+    }, [])
+    
     return(
-        <context.Provider>{props.children}</context.Provider>
+        <context.Provider value={{wordsArr, getWordsArr}}>
+            {props.children}
+        </context.Provider>
     );
 }
 
-export {context, contextProvider}
+export {ContextProvider, context};

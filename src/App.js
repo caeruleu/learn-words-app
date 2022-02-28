@@ -9,19 +9,23 @@ import Table from './components/Table';
 import CardList from './components/CardList';
 import Header from './components/Header';
 import Page404 from './components/Page404';
+import { ContextProvider, context } from './Context';
 
 export default function App() {
   return (
-    <Router>
-      <div className="App">
-        <Header />
+    <ContextProvider>
+      <Router>
+        <div className="App">
+          <Header />
 
-        <Routes>
-          <Route path="/cardsgame" element={<CardList />} />
-          <Route exact path="/" element={<Table />}/>
-          <Route path="*" element={<Page404 />} />
-        </Routes>
-      </div>
-    </Router>
+          <Routes>
+            <Route path="/cardsgame" element={<CardList />} />
+            <Route exact path="/" element={<Table />}/>
+            <Route path="*" element={<Page404 />} />
+          </Routes>
+          
+        </div>
+      </Router>
+    </ContextProvider>
   );
 }

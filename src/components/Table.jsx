@@ -1,23 +1,15 @@
 import "../assets/styles/tablerow.scss";
 import "../assets/styles/consts.scss";
 import TableRow from "./TableRow";
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
+import {ContextProvider, context} from '../Context.jsx';
 
-export default function Table() {
-    const [wordsArr, setWordsArr] = useState([])
+export default function Table(props) {
+    const {getWordsArr, wordsArr} = useContext(context);
 
     useEffect(() => {
         getWordsArr();
-        console.log(wordsArr);
     }, [])
-
-    const getWordsArr = () => {
-        fetch('/api/words')
-            .then(response => response.json())
-            .then(data => {
-                setWordsArr(data);
-            })
-    }
 
     return (
         <table>

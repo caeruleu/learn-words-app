@@ -15,9 +15,6 @@ export default function Card (props) {
 
     useEffect(() => {
         ref.current.focus();
-        return () => {
-            console.log('card unmounted');
-        }
     }, []);
     
     return(
